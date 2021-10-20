@@ -1,0 +1,177 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".bank_profile">
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        android:background="#4385F5"
+        />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="BloodHarv"
+        android:textSize="25sp"
+        android:textStyle="bold"
+        android:gravity="center"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="15dp"
+        android:textColor="@color/white"
+        />
+
+    <ImageView
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:background="@drawable/ic_baseline_menu_24"
+        android:layout_margin="15dp"
+        android:id="@+id/menu"
+        />
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/profile_image"
+        android:layout_width="140dp"
+        android:layout_height="140dp"
+        android:src="@drawable/profile_pic"
+        android:layout_below="@+id/menu"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="20dp"
+        />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="ABC Blood Center"
+        android:textSize="25sp"
+        android:textStyle="bold"
+        android:layout_below="@+id/profile_image"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="20dp"
+        android:id="@+id/username"
+        />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Blood Bank"
+        android:textSize="20sp"
+        android:layout_below="@+id/username"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="10dp"
+        android:id="@+id/donor"
+        />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Blood Types"
+        android:textSize="22sp"
+        android:layout_below="@+id/donor"
+        android:layout_marginLeft="30dp"
+        android:id="@+id/bloodtype"
+        android:layout_marginTop="20dp"
+        />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Availability"
+        android:textSize="22sp"
+        android:layout_below="@+id/donor"
+
+        android:layout_marginLeft="250dp"
+        android:layout_marginTop="20dp"
+        android:id="@+id/location"
+        />
+
+    <EditText
+        android:layout_width="120dp"
+        android:layout_height="40dp"
+        android:layout_below="@id/bloodtype"
+        android:layout_marginLeft="30dp"
+        android:layout_marginTop="10dp"
+        android:background="#E1E1E1"
+        android:id="@+id/bloodtype_text"
+        />
+
+    <EditText
+        android:layout_width="120dp"
+        android:layout_height="40dp"
+        android:layout_below="@id/bloodtype"
+
+        android:layout_marginLeft="250dp"
+        android:layout_marginTop="10dp"
+        android:background="#E1E1E1"
+        />
+
+
+    <EditText
+        android:layout_width="120dp"
+        android:layout_height="40dp"
+        android:layout_below="@id/bloodtype_text"
+        android:layout_marginLeft="30dp"
+        android:layout_marginTop="20dp"
+        android:background="#E1E1E1"
+        android:id="@+id/second_edit_text"
+        />
+    <EditText
+        android:layout_width="120dp"
+        android:layout_height="40dp"
+        android:layout_below="@id/bloodtype_text"
+
+        android:layout_marginLeft="250dp"
+        android:layout_marginTop="20dp"
+        android:background="#E1E1E1"
+        />
+
+    <EditText
+        android:layout_width="120dp"
+        android:layout_height="40dp"
+        android:layout_below="@id/second_edit_text"
+        android:layout_marginLeft="30dp"
+        android:layout_marginTop="20dp"
+        android:background="#E1E1E1"
+        />
+    <EditText
+        android:layout_width="120dp"
+        android:layout_height="40dp"
+        android:layout_below="@id/second_edit_text"
+
+        android:layout_marginLeft="250dp"
+        android:layout_marginTop="20dp"
+        android:background="#E1E1E1"
+        android:id="@+id/last_edit_text"
+        />
+
+    <ImageView
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@id/last_edit_text"
+        android:layout_marginTop="30dp"
+        android:background="@drawable/ic_baseline_add_circle_outline_24"
+        android:id="@+id/add"
+        />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Location"
+        android:textSize="20dp"
+        android:layout_below="@+id/add"
+        android:layout_marginLeft="30dp"
+        android:id="@id/location"
+        />
+    <EditText
+        android:layout_width="120dp"
+        android:layout_height="40dp"
+        android:layout_below="@id/location"
+        android:layout_marginLeft="30dp"
+        android:layout_marginTop="10dp"
+        android:background="#E1E1E1"
+        />
+
+
+</RelativeLayout>
