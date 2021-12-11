@@ -1,0 +1,82 @@
+package com.hamza.blood_harv;
+
+public class Profile {
+    private String name, bloodType, accountType, location, age, gender, dp, active;
+    public Profile(){
+
+    }
+    public Profile(String name, String bloodType, String accountType, String location, String age, String gender, String dp, String active) {
+        this.name = name;
+        this.bloodType = bloodType;
+        this.accountType = accountType;
+        this.location = location;
+        this.age = age;
+        this.gender = gender;
+        this.dp = dp;
+        this.active = active;
+    }
+
+    public String getBloodType() {
+        return bloodType;
+    }
+
+    public void setBloodType(String bloodType) {
+        this.bloodType = bloodType;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getAccountType() {
+        return accountType;
+    }
+
+    public void setAccountType(String accountType) {
+        this.accountType = accountType;
+    }
+
+    public String getLocation() {
+        return location;
+    }
+
+    public void setLocation(String location) {
+        this.location = location;
+    }
+
+    public String getAge() {
+        return age;
+    }
+
+    public void setAge(String age) {
+        this.age = age;
+    }
+
+    public String getGender() {
+        return gender;
+    }
+
+    public void setGender(String gender) {
+        this.gender = gender;
+    }
+
+    public String getDp() {
+        return dp;
+    }
+
+    public void setDp(String dp) {
+        this.dp = dp;
+    }
+
+    public String getActive() {
+        return active;
+    }
+
+    public void setActive(String active) {
+        this.active = active;
+    }
+}

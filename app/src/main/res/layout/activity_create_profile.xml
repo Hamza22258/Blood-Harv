@@ -46,7 +46,7 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="0.5"
+        android:layout_weight="0.3"
         android:text="Name"
         android:textSize="20sp"
         android:textStyle="bold"
@@ -69,7 +69,7 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="0.5"
+        android:layout_weight="0.4"
         android:text="Account Type"
         android:textSize="20sp"
         android:textStyle="bold"
@@ -92,7 +92,7 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="0.3"
+        android:layout_weight="0.4"
         android:text="Blood Type"
         android:textSize="20sp"
         android:textStyle="bold"
@@ -178,20 +178,35 @@
             android:id="@+id/gender"
             />
     </LinearLayout>
-    <RelativeLayout
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="1">
-
+        android:layout_weight="1"
+        android:weightSum="2"
+        android:orientation="horizontal"
+        >
+        <android.widget.Button
+            android:layout_marginLeft="15dp"
+            android:id="@+id/uploadImage"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.7"
+            android:background="#43C0F5"
+            android:padding="5dp"
+            android:text="Upload Picture"
+            android:textColor="@color/white" />
+       <LinearLayout
+           android:layout_width="0dp"
+           android:layout_height="match_parent"
+           android:layout_weight="0.4"/>
         <android.widget.Button
             android:id="@+id/addDetails"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_centerHorizontal="true"
-            android:layout_weight="1"
+            android:layout_weight="0.7"
             android:background="#4385F5"
             android:padding="5dp"
             android:text="Add Details"
             android:textColor="@color/white" />
-    </RelativeLayout>
+    </LinearLayout>
 </LinearLayout>
