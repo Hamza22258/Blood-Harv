@@ -57,10 +57,11 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="0.5"
-        android:text="Name"
+        android:text="Email"
         android:textSize="20sp"
         android:textStyle="bold"
-        android:paddingLeft="10dp"/>
+        android:paddingLeft="10dp"
+        />
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
@@ -71,7 +72,8 @@
             android:layout_height="match_parent"
             android:background="#E1E1E1"
             android:paddingLeft="10dp"
-            android:hint="Name"
+            android:hint="Email"
+            android:id="@+id/email"
             />
     </LinearLayout>
     <TextView
@@ -93,43 +95,24 @@
             android:background="#E1E1E1"
             android:paddingLeft="10dp"
             android:hint="password"
+            android:id="@+id/password"
             />
     </LinearLayout>
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="0.5"
-        android:text="Email"
-        android:textSize="20sp"
-        android:textStyle="bold"
-        android:paddingLeft="10dp"/>
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1"
-        android:padding="12dp">
-        <EditText
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:background="#E1E1E1"
-            android:paddingLeft="10dp"
-            android:hint="Email"
-            />
-    </LinearLayout>
-
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1">
+
         <android.widget.Button
-            android:padding="5dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="Create Account"
-            android:background="#4385F5"
-            android:textColor="@color/white"
             android:layout_centerHorizontal="true"
+            android:layout_weight="1"
+            android:background="#4385F5"
+            android:padding="5dp"
+            android:text="Create Account"
+            android:textColor="@color/white"
+            android:id="@+id/createAccount"
             />
     </RelativeLayout>
 </LinearLayout>

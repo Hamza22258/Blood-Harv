@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:weightSum="10"
     android:orientation="vertical"
-    tools:context=".LoginActivity">
+    tools:context=".CreateProfile">
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
@@ -42,22 +42,58 @@
                 android:textColor="@color/white"/>
         </LinearLayout>
     </LinearLayout>
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="3">
-        <ImageView
-            android:layout_width="140dp"
-            android:layout_height="140dp"
-            android:layout_alignParentBottom="true"
-            android:layout_centerHorizontal="true"
-            android:src="@drawable/logo"/>
-    </RelativeLayout>
+
     <TextView
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="0.5"
-        android:text="LoginId"
+        android:text="Name"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:paddingLeft="10dp"
+        />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:padding="12dp">
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="#E1E1E1"
+            android:paddingLeft="10dp"
+            android:hint="Name"
+            android:id="@+id/name"
+            />
+    </LinearLayout>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="0.5"
+        android:text="Account Type"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:paddingLeft="10dp"
+        />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:padding="12dp">
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="#E1E1E1"
+            android:paddingLeft="10dp"
+            android:hint="Type"
+            android:id="@+id/accountType"
+            />
+    </LinearLayout>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="0.3"
+        android:text="Blood Type"
         android:textSize="20sp"
         android:textStyle="bold"
         android:paddingLeft="10dp"/>
@@ -71,14 +107,15 @@
             android:layout_height="match_parent"
             android:background="#E1E1E1"
             android:paddingLeft="10dp"
-            android:hint="username"
+            android:hint="Type"
+            android:id="@+id/bloodType"
             />
     </LinearLayout>
     <TextView
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="0.5"
-        android:text="Password"
+        android:layout_weight="0.3"
+        android:text="Location"
         android:textSize="20sp"
         android:textStyle="bold"
         android:paddingLeft="10dp"/>
@@ -92,33 +129,69 @@
             android:layout_height="match_parent"
             android:background="#E1E1E1"
             android:paddingLeft="10dp"
-            android:hint="password"
+            android:hint="Location"
+            android:id="@+id/location"
+            />
+    </LinearLayout>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="0.4"
+        android:text="Age"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:paddingLeft="10dp"/>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:padding="12dp">
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="#E1E1E1"
+            android:paddingLeft="10dp"
+            android:hint="Age"
+            android:id="@+id/age"
+            />
+    </LinearLayout>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="0.3"
+        android:text="Gender"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:paddingLeft="10dp"
+        />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:padding="12dp">
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="#E1E1E1"
+            android:paddingLeft="10dp"
+            android:hint="Name"
+            android:id="@+id/gender"
             />
     </LinearLayout>
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1">
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:paddingLeft="10dp"
-            android:text="Create Account"
-            android:layout_centerHorizontal="true"
-            />
-    </RelativeLayout>
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1">
+
         <android.widget.Button
+            android:id="@+id/addDetails"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="login"
-            android:background="#4385F5"
-            android:textColor="@color/white"
             android:layout_centerHorizontal="true"
-            />
+            android:layout_weight="1"
+            android:background="#4385F5"
+            android:padding="5dp"
+            android:text="Add Details"
+            android:textColor="@color/white" />
     </RelativeLayout>
 </LinearLayout>

@@ -3,14 +3,14 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
-        <entry key="..\:/Users/hamza/AndroidStudioProjects/Blood-Harv/app/src/main/res/layout/activity_create_account.xml" value="0.25416666666666665" />
-        <entry key="..\:/Users/hamza/AndroidStudioProjects/Blood-Harv/app/src/main/res/layout/activity_home.xml" value="0.25416666666666665" />
-        <entry key="..\:/Users/hamza/AndroidStudioProjects/Blood-Harv/app/src/main/res/layout/activity_login.xml" value="0.264" />
-        <entry key="..\:/Users/hamza/AndroidStudioProjects/Blood-Harv/app/src/main/res/layout/activity_search.xml" value="0.25416666666666665" />
-        <entry key="..\:/Users/hamza/AndroidStudioProjects/Blood-Harv/app/src/main/res/layout/activity_splash.xml" value="0.24010416666666667" />
-        <entry key="..\:/Users/zain/AndroidStudioProjects/Blood-Harv/app/src/main/res/drawable/ic_baseline_add_circle_outline_24.xml" value="0.14635416666666667" />
-        <entry key="..\:/Users/zain/AndroidStudioProjects/Blood-Harv/app/src/main/res/layout/activity_bank_profile.xml" value="0.1286231884057971" />
-        <entry key="..\:/Users/zain/AndroidStudioProjects/Blood-Harv/app/src/main/res/layout/activity_donor_profile.xml" value="0.10552536231884058" />
+        <entry key="..\:/Users/Hamza/AndroidStudioProjects/BloodHarv/app/src/main/res/layout/activity_bank_profile.xml" value="0.33177083333333335" />
+        <entry key="..\:/Users/Hamza/AndroidStudioProjects/BloodHarv/app/src/main/res/layout/activity_create_account.xml" value="0.33177083333333335" />
+        <entry key="..\:/Users/Hamza/AndroidStudioProjects/BloodHarv/app/src/main/res/layout/activity_create_profile.xml" value="0.33177083333333335" />
+        <entry key="..\:/Users/Hamza/AndroidStudioProjects/BloodHarv/app/src/main/res/layout/activity_donor_profile.xml" value="0.33177083333333335" />
+        <entry key="..\:/Users/Hamza/AndroidStudioProjects/BloodHarv/app/src/main/res/layout/activity_login.xml" value="0.33177083333333335" />
+        <entry key="..\:/Users/Hamza/AndroidStudioProjects/BloodHarv/app/src/main/res/layout/activity_main.xml" value="0.33177083333333335" />
+        <entry key="..\:/Users/Hamza/AndroidStudioProjects/BloodHarv/app/src/main/res/layout/activity_search.xml" value="0.33177083333333335" />
+        <entry key="..\:/Users/Hamza/AndroidStudioProjects/BloodHarv/app/src/main/res/layout/activity_splash.xml" value="0.33177083333333335" />
       </map>
     </option>
   </component>

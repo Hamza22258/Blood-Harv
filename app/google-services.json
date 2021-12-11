@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "610078699411",
+    "project_id": "blood-harv",
+    "storage_bucket": "blood-harv.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:610078699411:android:b005463fcce8bd21274266",
+        "android_client_info": {
+          "package_name": "com.hamza.blood_harv"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "610078699411-bv880vb7n60d6l2jkt26qe393h9dpi94.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA0KpPIxysnHvxma_sb0AgeItrohFQ_sIg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "610078699411-bv880vb7n60d6l2jkt26qe393h9dpi94.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

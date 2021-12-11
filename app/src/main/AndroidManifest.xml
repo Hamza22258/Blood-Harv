@@ -16,10 +16,13 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.BloodHarv">
         <activity
-            android:name=".donor_profile"
+            android:name=".CreateProfile"
             android:exported="false" />
         <activity
-            android:name=".bank_profile"
+            android:name=".DonorProfile"
+            android:exported="false" />
+        <activity
+            android:name=".BankProfile"
             android:exported="false" />
         <!--
              The API key for Google Maps-based APIs is defined as a string resource.

@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".donor_profile">
+    tools:context=".DonorProfile">
     <View
         android:layout_width="match_parent"
         android:layout_height="70dp"
@@ -87,14 +87,13 @@
         />
 
     <EditText
+        android:id="@+id/bloodtype_text"
         android:layout_width="120dp"
         android:layout_height="40dp"
         android:layout_below="@id/bloodtype"
         android:layout_marginLeft="30dp"
         android:layout_marginTop="10dp"
-        android:background="#E1E1E1"
-        android:id="@+id/bloodtype_text"
-        />
+        android:background="#E1E1E1" />
     <EditText
         android:layout_width="120dp"
         android:layout_height="40dp"
