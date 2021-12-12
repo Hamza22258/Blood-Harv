@@ -10,13 +10,15 @@
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
     <uses-permission android:name="android.permission.INTERNET"/>
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+    <uses-permission android:name="android.permission.CAMERA"/>
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.BloodHarv">
+        android:theme="@style/Theme.BloodHarv"
+        >
         <activity
             android:name=".CreateProfile"
             android:exported="false" />
@@ -51,11 +53,9 @@
         <activity
             android:name=".LoginActivity"
             android:exported="true" />
+
         <activity
             android:name=".SplashActivity"
-            android:exported="true" />
-        <activity
-            android:name=".MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

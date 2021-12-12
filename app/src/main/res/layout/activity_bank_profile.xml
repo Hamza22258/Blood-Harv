@@ -5,9 +5,10 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".BankProfile">
+
     <View
         android:layout_width="match_parent"
-        android:layout_height="70dp"
+        android:layout_height="60dp"
         android:background="#4385F5"
 
         />
@@ -27,7 +28,7 @@
         android:layout_width="40dp"
         android:layout_height="40dp"
         android:background="@drawable/ic_baseline_menu_24"
-        android:layout_margin="15dp"
+        android:layout_margin="10dp"
         android:id="@+id/menu"
         />
 

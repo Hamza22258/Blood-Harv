@@ -7,8 +7,9 @@
     tools:context=".DonorProfile">
     <View
         android:layout_width="match_parent"
-        android:layout_height="70dp"
+        android:layout_height="60dp"
         android:background="#4385F5"
+
         />
     <TextView
         android:layout_width="wrap_content"
@@ -26,67 +27,63 @@
         android:layout_width="40dp"
         android:layout_height="40dp"
         android:background="@drawable/ic_baseline_menu_24"
-        android:layout_margin="15dp"
+        android:layout_margin="10dp"
         android:id="@+id/menu"
         />
 
     <de.hdodenhof.circleimageview.CircleImageView
-        android:id="@+id/profile_image"
+        android:id="@+id/profileImage"
         android:layout_width="140dp"
         android:layout_height="140dp"
-        android:src="@drawable/profile_pic"
         android:layout_below="@+id/menu"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="20dp"
-        />
+        android:src="@drawable/profile_pic" />
 
     <TextView
+        android:id="@+id/username"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="John Doe"
-        android:textSize="25sp"
-        android:textStyle="bold"
-        android:layout_below="@+id/profile_image"
+        android:layout_below="@+id/profileImage"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="20dp"
-        android:id="@+id/username"
-        />
+        android:text="John Doe"
+        android:textSize="25sp"
+        android:textStyle="bold" />
 
     <TextView
+        android:id="@+id/accountType"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Donor"
-        android:textSize="20sp"
         android:layout_below="@+id/username"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="10dp"
-        android:id="@+id/donor"
-        />
+        android:text="Donor"
+        android:textSize="20sp" />
 
     <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Blood Type"
-        android:textSize="22sp"
-        android:layout_below="@+id/donor"
-        android:layout_marginLeft="30dp"
         android:id="@+id/bloodtype"
-        android:layout_marginTop="20dp"
-        />
-
-    <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Location"
-        android:textSize="22sp"
-        android:layout_below="@+id/donor"
-
-        android:layout_marginLeft="250dp"
+        android:layout_below="@+id/accountType"
+        android:layout_marginLeft="30dp"
         android:layout_marginTop="20dp"
-        android:id="@+id/location"
-        />
+        android:text="Blood Type"
+        android:textSize="22sp" />
 
-    <EditText
+    <TextView
+        android:id="@+id/location"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/accountType"
+        android:layout_marginLeft="250dp"
+
+        android:layout_marginTop="20dp"
+        android:text="Location"
+        android:textSize="22sp" />
+
+    <TextView
+        android:padding="5dp"
         android:id="@+id/bloodtype_text"
         android:layout_width="120dp"
         android:layout_height="40dp"
@@ -94,15 +91,16 @@
         android:layout_marginLeft="30dp"
         android:layout_marginTop="10dp"
         android:background="#E1E1E1" />
-    <EditText
+
+    <TextView
+        android:padding="5dp"
+        android:id="@+id/location_text"
         android:layout_width="120dp"
         android:layout_height="40dp"
         android:layout_below="@id/location"
-
         android:layout_marginLeft="250dp"
         android:layout_marginTop="10dp"
-        android:background="#E1E1E1"
-        />
+        android:background="#E1E1E1" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -121,12 +119,13 @@
         android:text="Gender"
         android:textSize="22sp"
         android:layout_below="@+id/bloodtype_text"
-
         android:layout_marginLeft="250dp"
         android:layout_marginTop="20dp"
         />
 
-    <EditText
+    <TextView
+        android:padding="5dp"
+        android:id="@+id/age_text"
         android:layout_width="120dp"
         android:layout_height="40dp"
         android:layout_below="@id/age"
@@ -135,14 +134,15 @@
         android:background="#E1E1E1"
 
         />
-    <EditText
+
+    <TextView
+        android:padding="5dp"
+        android:id="@+id/gender"
         android:layout_width="120dp"
         android:layout_height="40dp"
         android:layout_below="@id/age"
-
         android:layout_marginLeft="250dp"
         android:layout_marginTop="10dp"
-        android:background="#E1E1E1"
-        />
+        android:background="#E1E1E1" />
 
 </RelativeLayout>

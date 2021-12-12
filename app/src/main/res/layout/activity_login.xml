@@ -10,7 +10,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="1"
+        android:layout_weight="0.8"
         android:weightSum="6"
         android:orientation="horizontal"
         android:background="#4385F5">
@@ -38,7 +38,7 @@
                 android:layout_height="match_parent"
                 android:text="BloodHarv"
                 android:gravity="center"
-                android:textSize="40sp"
+                android:textSize="35sp"
                 android:textColor="@color/white"/>
         </LinearLayout>
     </LinearLayout>
@@ -72,6 +72,7 @@
             android:background="#E1E1E1"
             android:paddingLeft="10dp"
             android:hint="username"
+            android:id="@+id/username"
             />
     </LinearLayout>
     <TextView
@@ -93,32 +94,35 @@
             android:background="#E1E1E1"
             android:paddingLeft="10dp"
             android:hint="password"
+            android:id="@+id/password"
             />
     </LinearLayout>
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1">
+
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
             android:paddingLeft="10dp"
             android:text="Create Account"
-            android:layout_centerHorizontal="true"
-            />
+            android:id="@+id/createAccount"/>
     </RelativeLayout>
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1">
+
         <android.widget.Button
+            android:id="@+id/login"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="login"
-            android:background="#4385F5"
-            android:textColor="@color/white"
             android:layout_centerHorizontal="true"
-            />
+            android:layout_weight="1"
+            android:background="#4385F5"
+            android:text="login"
+            android:textColor="@color/white" />
     </RelativeLayout>
 </LinearLayout>

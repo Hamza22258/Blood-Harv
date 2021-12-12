@@ -44,6 +44,7 @@ public class CreateAccountActivity extends AppCompatActivity {
                             @Override
                             public void onFailure(@NonNull Exception e) {
                                 Toast.makeText(CreateAccountActivity.this,"Signup Failure", Toast.LENGTH_LONG).show();
+                                finish();
                             }
                         });
 
