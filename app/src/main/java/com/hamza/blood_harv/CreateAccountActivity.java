@@ -5,7 +5,6 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.os.strictmode.WebViewMethodCalledOnWrongThreadViolation;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -28,6 +27,7 @@ public class CreateAccountActivity extends AppCompatActivity {
         password=findViewById(R.id.password);
         createAccount=findViewById(R.id.createAccount);
         mAuth=FirebaseAuth.getInstance();
+        String type= getIntent().getStringExtra("type");
 
         createAccount.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -36,8 +36,17 @@ public class CreateAccountActivity extends AppCompatActivity {
                         .addOnSuccessListener(new OnSuccessListener<AuthResult>() {
                             @Override
                             public void onSuccess(AuthResult authResult) {
-                                Intent intent=new Intent(CreateAccountActivity.this,CreateProfile.class);
-                                startActivity(intent);
+                                if(type.equals("Donor")){
+                                Intent intent=new Intent(CreateAccountActivity.this, CreateDonorProfile.class);
+                                    startActivity(intent);
+
+                                }
+                                else if(type.equals("Blood Bank")){
+                                    Intent intent=new Intent(CreateAccountActivity.this, CreateBloodBankProfile.class);
+                                    startActivity(intent);
+
+                                }
+
                             }
                         })
                         .addOnFailureListener(new OnFailureListener() {

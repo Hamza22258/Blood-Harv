@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="250dp"
+        android:layout_height="100dp">
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:layout_weight="0.3"
+            android:textColor="#000000"
+            android:textAlignment="center"
+            android:text="Are you a Blood Bank or an Individual Donor?"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:paddingLeft="10dp"
+            />
+    </LinearLayout>
+    <RadioGroup
+        android:id="@+id/createProfile_gender"
+        android:layout_centerInParent="true"
+        android:layout_centerHorizontal="true"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:layout_weight="0.2"
+        android:orientation="horizontal"
+        android:gravity="center">
+        <RadioButton
+            android:id="@+id/createProfile_gender_M"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="10dp"
+            android:text="Donor"
+            android:layout_marginRight="20dp"
+            android:buttonTint="#8D8C8C"
+            android:textColor="#000000">
+        </RadioButton>
+        <RadioButton
+            android:id="@+id/BloodBank_s"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="10dp"
+            android:text="Blood Bank"
+            android:textColor="#000000"
+            android:buttonTint="#8D8C8C">
+        </RadioButton>
+    </RadioGroup>
+    <android.widget.Button
+        android:id="@+id/createprofile"
+        android:layout_centerHorizontal="true"
+        android:layout_alignParentBottom="true"
+         android:layout_marginBottom="200dp"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="0.7"
+        android:background="#4385F5"
+        android:padding="5dp"
+        android:text="Create Account"
+        android:textColor="@color/white" />
+
+</RelativeLayout>

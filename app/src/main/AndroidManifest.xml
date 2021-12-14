@@ -20,7 +20,7 @@
         android:theme="@style/Theme.BloodHarv"
         >
         <activity
-            android:name=".CreateProfile"
+            android:name=".CreateDonorProfile"
             android:exported="false" />
         <activity
             android:name=".DonorProfile"
@@ -63,6 +63,8 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".SelectAccountActivity" />
+        <activity android:name=".CreateBloodBankProfile" />
     </application>
 
 </manifest>

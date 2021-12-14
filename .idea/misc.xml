@@ -3,6 +3,14 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Documents/Fast/Semester 7/Software for Mobile Devices/Project/Blood-Harv/app/src/main/res/layout/activity_bank_profile.xml" value="0.17391304347826086" />
+        <entry key="..\:/Documents/Fast/Semester 7/Software for Mobile Devices/Project/Blood-Harv/app/src/main/res/layout/activity_create_account.xml" value="0.11302083333333333" />
+        <entry key="..\:/Documents/Fast/Semester 7/Software for Mobile Devices/Project/Blood-Harv/app/src/main/res/layout/activity_create_bloodbank_profile.xml" value="0.2" />
+        <entry key="..\:/Documents/Fast/Semester 7/Software for Mobile Devices/Project/Blood-Harv/app/src/main/res/layout/activity_create_profile.xml" value="0.17391304347826086" />
+        <entry key="..\:/Documents/Fast/Semester 7/Software for Mobile Devices/Project/Blood-Harv/app/src/main/res/layout/activity_donor_profile.xml" value="0.17391304347826086" />
+        <entry key="..\:/Documents/Fast/Semester 7/Software for Mobile Devices/Project/Blood-Harv/app/src/main/res/layout/activity_login.xml" value="0.11322463768115942" />
+        <entry key="..\:/Documents/Fast/Semester 7/Software for Mobile Devices/Project/Blood-Harv/app/src/main/res/layout/activity_main.xml" value="0.11322463768115942" />
+        <entry key="..\:/Documents/Fast/Semester 7/Software for Mobile Devices/Project/Blood-Harv/app/src/main/res/layout/activity_select_account.xml" value="0.1" />
         <entry key="..\:/Users/Hamza/AndroidStudioProjects/BloodHarv/app/src/main/res/layout/activity_bank_profile.xml" value="0.33177083333333335" />
         <entry key="..\:/Users/Hamza/AndroidStudioProjects/BloodHarv/app/src/main/res/layout/activity_create_account.xml" value="0.25" />
         <entry key="..\:/Users/Hamza/AndroidStudioProjects/BloodHarv/app/src/main/res/layout/activity_create_profile.xml" value="0.25" />
