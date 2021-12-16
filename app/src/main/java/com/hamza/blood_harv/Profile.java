@@ -21,6 +21,10 @@ public class Profile {
         this.accountType = accountType;
         this.location = location;
         this.dp = dp;
+        this.bloodType="";
+        this.age="";
+        this.active="";
+        this.gender="";
     }
 
 

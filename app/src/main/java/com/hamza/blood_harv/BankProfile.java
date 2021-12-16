@@ -57,8 +57,6 @@ public class BankProfile extends AppCompatActivity {
         add=findViewById(R.id.add);
         rv=findViewById(R.id.listBlood);
         ls=new ArrayList<>();
-//        RecyclerView.LayoutManager lm=new LinearLayoutManager(BankProfile.this);
-
         adapter=new TypesAdapter(ls,BankProfile.this);
         rv.setLayoutManager(new LinearLayoutManager(BankProfile.this));
         rv.setAdapter(adapter);
