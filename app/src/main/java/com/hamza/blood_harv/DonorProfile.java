@@ -43,8 +43,7 @@ public class DonorProfile extends AppCompatActivity {
     CircleImageView profileImage;
     TextView username, accountType, bloodtype, location, age, gender,active;
     Profile profile;
-    ImageView activeChange;
-    Button backToHome;
+    ImageView activeChange, backToHome;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -59,7 +58,7 @@ public class DonorProfile extends AppCompatActivity {
         gender=findViewById(R.id.gender);
         active=findViewById(R.id.active);
         activeChange=findViewById(R.id.activeChange);
-        backToHome=findViewById(R.id.backToHome);
+        backToHome=findViewById(R.id.openhome);
         activeChange.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -104,7 +103,7 @@ public class DonorProfile extends AppCompatActivity {
             }
         });
         
-        String url="http://192.168.0.100/Account/getAccount.php";
+        String url="http://192.168.1.16/Account/getAccount.php";
         StringRequest request=new StringRequest(
                 Request.Method.POST,
                 url,
@@ -117,7 +116,7 @@ public class DonorProfile extends AppCompatActivity {
 
                                 String image=object.getString("image");
 
-                                Picasso.get().load("http://192.168.0.100/Account/"+image).fit().centerCrop().into(profileImage);
+                                Picasso.get().load("http://192.168.1.16/Account/"+image).fit().centerCrop().into(profileImage);
                             }
 
                         } catch ( JSONException jsonException) {
