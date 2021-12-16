@@ -6,7 +6,10 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
@@ -23,6 +26,7 @@ import java.util.List;
 public class MainActivity extends AppCompatActivity {
 
     List<Profile> ls;
+    ImageView imageView;
     RecyclerView rv;
     HomeAdapter adapter;
     @Override
@@ -32,11 +36,38 @@ public class MainActivity extends AppCompatActivity {
         FirebaseDatabase database=FirebaseDatabase.getInstance();
         DatabaseReference reference=database.getReference("Profile");
         rv=findViewById(R.id.rv);
+        imageView=findViewById(R.id.openprofile);
         ls=new ArrayList<>();
 //        ls.add(new Profile("as","as","as","as","as","as","as","as"));
         adapter=new HomeAdapter(ls,MainActivity.this);
         rv.setLayoutManager(new LinearLayoutManager(MainActivity.this));
         rv.setAdapter(adapter);
+        imageView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                FirebaseDatabase database=FirebaseDatabase.getInstance();
+                String id=FirebaseAuth.getInstance().getCurrentUser().getUid();
+                DatabaseReference reference=database.getReference("Profile/"+id);
+               ;
+                reference.addValueEventListener(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot snapshot) {
+                        String accounttype=snapshot.getValue(Profile.class).getAccountType();
+                        if (accounttype.equals("Blood Bank")){
+                            startActivity(new Intent(MainActivity.this, BankProfile.class));
+                        }
+                        else if (accounttype.equals("Donor")){
+                            startActivity(new Intent(MainActivity.this, DonorProfile.class));
+                        }
+                    }
+
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError error) {
+
+                    }
+                });
+            }
+        });
         reference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {

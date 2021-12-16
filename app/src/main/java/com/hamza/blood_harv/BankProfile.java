@@ -43,7 +43,7 @@ public class BankProfile extends AppCompatActivity {
     CircleImageView profile_image;
     TextView username,location,account;
     Profile profile;
-    ImageView add;
+    ImageView add, imageView;
     RecyclerView rv;
     TypesAdapter adapter;
     @Override
@@ -54,14 +54,21 @@ public class BankProfile extends AppCompatActivity {
         username=findViewById(R.id.username);
         location=findViewById(R.id.location);
         account=findViewById(R.id.donor);
+        imageView=findViewById(R.id.openhome);
         add=findViewById(R.id.add);
         rv=findViewById(R.id.listBlood);
         ls=new ArrayList<>();
         adapter=new TypesAdapter(ls,BankProfile.this);
         rv.setLayoutManager(new LinearLayoutManager(BankProfile.this));
         rv.setAdapter(adapter);
+        imageView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(BankProfile.this, MainActivity.class));
+            }
+        });
 
-        String url="http://192.168.0.100/Account/getAccount.php";
+        String url="http://192.168.1.16/Account/getAccount.php";
         StringRequest request=new StringRequest(
                 Request.Method.POST,
                 url,
@@ -74,7 +81,7 @@ public class BankProfile extends AppCompatActivity {
 
                                 String image=object.getString("image");
 
-                                Picasso.get().load("http://192.168.0.100/Account/"+image).fit().centerCrop().into(profile_image);
+                                Picasso.get().load("http://192.168.1.16/Account/"+image).fit().centerCrop().into(profile_image);
                             }
 
                         } catch ( JSONException jsonException) {

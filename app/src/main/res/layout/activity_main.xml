@@ -41,6 +41,20 @@
                 android:textSize="35sp"
                 android:textColor="@color/white"/>
         </LinearLayout>
+        <RelativeLayout
+            android:layout_width="0dp"
+            android:layout_weight="1.5"
+            android:layout_height="match_parent"
+            >
+            <ImageView
+                android:id="@+id/openprofile"
+                android:padding="10dp"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:src="@drawable/ic_baseline_account_box_24"
+                />
+
+        </RelativeLayout>
     </LinearLayout>
 
     <androidx.recyclerview.widget.RecyclerView

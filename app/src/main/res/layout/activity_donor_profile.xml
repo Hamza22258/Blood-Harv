@@ -5,12 +5,29 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".DonorProfile">
+
     <View
         android:layout_width="match_parent"
         android:layout_height="60dp"
         android:background="#4385F5"
 
         />
+    <RelativeLayout
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:layout_alignParentEnd="true"
+        android:layout_marginEnd="20dp"
+        >
+
+        <ImageView
+            android:id="@+id/openhome"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:padding="7dp"
+            android:src="@drawable/ic_baseline_home_24" />
+
+    </RelativeLayout>
+
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -174,15 +191,5 @@
         android:background="#E1E1E1"
         android:padding="5dp" />
 
-    <android.widget.Button
-        android:id="@+id/backToHome"
-        android:layout_below="@id/activeChange"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="30dp"
-        android:layout_centerHorizontal="true"
-        android:background="#4385F5"
-        android:text="Back to Home"
-        android:padding="10dp"
-        android:textColor="@color/white" />
+
 </RelativeLayout>

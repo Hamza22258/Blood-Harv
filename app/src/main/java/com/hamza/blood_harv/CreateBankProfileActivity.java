@@ -89,7 +89,7 @@ public class CreateBankProfileActivity extends AppCompatActivity {
                                                             ,"Blood Bank"
                                                             ,location.getText().toString()
                                                             ,dp));
-                                            String url="http://192.168.0.100/Account/insertAccount.php";
+                                            String url="http://192.168.1.16/Account/insertAccount.php";
                                             StringRequest request=new StringRequest(
                                                     Request.Method.POST,
                                                     url,
