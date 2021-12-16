@@ -13,6 +13,11 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.android.volley.Request;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.StringRequest;
+import com.android.volley.toolbox.Volley;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
@@ -22,8 +27,13 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.squareup.picasso.Picasso;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 
@@ -52,6 +62,49 @@ public class BankProfile extends AppCompatActivity {
         adapter=new TypesAdapter(ls,BankProfile.this);
         rv.setLayoutManager(new LinearLayoutManager(BankProfile.this));
         rv.setAdapter(adapter);
+
+        String url="http://192.168.0.100/Account/getAccount.php";
+        StringRequest request=new StringRequest(
+                Request.Method.POST,
+                url,
+                new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String response) {
+                        try {
+                            JSONObject object=new JSONObject(response);
+                            if(object.getInt("Success")==1){
+
+                                String image=object.getString("image");
+
+                                Picasso.get().load("http://192.168.0.100/Account/"+image).fit().centerCrop().into(profile_image);
+                            }
+
+                        } catch ( JSONException jsonException) {
+                            jsonException.printStackTrace();
+                        }
+                    }
+                }
+                ,
+                new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        Toast.makeText(BankProfile.this, error+"", Toast.LENGTH_LONG).show();
+                    }
+                }
+        ){
+            protected Map<String,String> getParams(){
+                Map<String,String> data=new HashMap<String,String>();
+                String myid=FirebaseAuth.getInstance().getCurrentUser().getUid();
+                data.put("uid",myid);
+                return data;
+            }
+        };
+        Volley.newRequestQueue(BankProfile.this).add(request);
+
+
+
+
+
         FirebaseDatabase database=FirebaseDatabase.getInstance();
         String id= FirebaseAuth.getInstance().getCurrentUser().getUid();
         DatabaseReference reference=database.getReference("Profile/"+id);
@@ -59,11 +112,10 @@ public class BankProfile extends AppCompatActivity {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 profile=snapshot.getValue(Profile.class);
-                Picasso.get().load(profile.getDp()).into(profile_image);
+//                Picasso.get().load(profile.getDp()).into(profile_image);
                 username.setText(profile.getName());
                 account.setText("Blood Bank");
                 location.setText(profile.getLocation());
-//                Toast.makeText(DonorProfile.this, profile.getName()+"", Toast.LENGTH_SHORT).show();
             }
 
             @Override

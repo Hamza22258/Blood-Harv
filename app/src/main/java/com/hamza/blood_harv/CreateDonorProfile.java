@@ -4,13 +4,22 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.Bundle;
+import android.util.Base64;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.android.volley.Request;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.StringRequest;
+import com.android.volley.toolbox.Volley;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
@@ -23,12 +32,24 @@ import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.io.ByteArrayOutputStream;
+import java.io.FileNotFoundException;
+import java.io.InputStream;
+import java.util.HashMap;
+import java.util.Map;
+
 public class CreateDonorProfile extends AppCompatActivity {
     private GoogleMap mMap;
     TextView name, bloodType, location, age, gender;
     Button addDetails, uploadImage;
     Uri selectedImage;
     Double longitude,latitude;
+    Bitmap bitmap;
+    String encodedImage;
+    ImageView temp;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -40,6 +61,7 @@ public class CreateDonorProfile extends AppCompatActivity {
         gender=findViewById(R.id.gender);
         addDetails=findViewById(R.id.addDetails);
         uploadImage=findViewById(R.id.uploadImage);
+        temp=findViewById(R.id.temp);
         FirebaseDatabase database=FirebaseDatabase.getInstance();
         DatabaseReference reference=database.getReference("Profile");
 
@@ -72,8 +94,48 @@ public class CreateDonorProfile extends AppCompatActivity {
                                                 @Override
                                                 public void onComplete(@NonNull Task<Void> task) {
                                                     if(task.isSuccessful()){
-                                                        Toast.makeText(CreateDonorProfile.this,"User Registered",Toast.LENGTH_LONG).show();
-                                                        startActivity(new Intent(CreateDonorProfile.this, DonorProfile.class));
+                                                        String url="http://192.168.0.100/Account/insertAccount.php";
+                                                        StringRequest request=new StringRequest(
+                                                                Request.Method.POST,
+                                                                url,
+                                                                new Response.Listener<String>() {
+                                                                    @Override
+                                                                    public void onResponse(String response) {
+                                                                        try {
+                                                                            JSONObject object=new JSONObject(response);
+                                                                            if(object.getInt("Success")==1){
+//                                                                                Toast.makeText(CreateDonorProfile.this, object.getString("msg")+"", Toast.LENGTH_LONG).show();
+                                                                                Toast.makeText(CreateDonorProfile.this,"User Registered",Toast.LENGTH_LONG).show();
+//                                                                                Bitmap decdedImage= BitmapFactory.decodeByteArray( android.util.Base64.decode(encodedImage, Base64.DEFAULT),
+//                                                                                        0, android.util.Base64.decode(encodedImage, Base64.DEFAULT).length);
+//                                                                                temp.setImageBitmap(decdedImage);
+                                                                                startActivity(new Intent(CreateDonorProfile.this, DonorProfile.class));
+                                                                            }
+
+                                                                        } catch ( JSONException jsonException) {
+                                                                            jsonException.printStackTrace();
+                                                                        }
+                                                                    }
+                                                                }
+                                                                ,
+                                                                new Response.ErrorListener() {
+                                                                    @Override
+                                                                    public void onErrorResponse(VolleyError error) {
+                                                                        Toast.makeText(CreateDonorProfile.this, error+"", Toast.LENGTH_LONG).show();
+                                                                    }
+                                                                }
+                                                        ){
+                                                            protected Map<String,String> getParams(){
+                                                                Map<String,String> data=new HashMap<String,String>();
+                                                                String myid=FirebaseAuth.getInstance().getCurrentUser().getUid();
+                                                                data.put("uid",myid);
+                                                                data.put("image",encodedImage);
+                                                                return data;
+                                                            }
+                                                        };
+                                                        Volley.newRequestQueue(CreateDonorProfile.this).add(request);
+
+
                                                     }
                                                     else{
                                                         Toast.makeText(CreateDonorProfile.this,"User Not Registered",Toast.LENGTH_LONG).show();
@@ -131,7 +193,13 @@ public class CreateDonorProfile extends AppCompatActivity {
         if(requestCode==1) {
             if (resultCode == RESULT_OK) {
                 selectedImage = imageReturnedIntent.getData();
-
+                try {
+                    InputStream inputStream = getContentResolver().openInputStream(selectedImage);
+                    bitmap = BitmapFactory.decodeStream(inputStream);
+                    imageStore(bitmap);
+                } catch (FileNotFoundException e) {
+                    e.printStackTrace();
+                }
 
             } else {
                 Toast.makeText(CreateDonorProfile.this, "Add Image", Toast.LENGTH_LONG).show();
@@ -149,6 +217,29 @@ public class CreateDonorProfile extends AppCompatActivity {
                 longitude=mMap.getCameraPosition().target.longitude;
             }
         });
+    }
+    public void insertImg(int id , Bitmap img ) {
+
+
+        byte[] data = getBitmapAsByteArray(img); // this is a function
+
+
+
+    }
+
+    public static byte[] getBitmapAsByteArray(Bitmap bitmap) {
+        ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
+        bitmap.compress(Bitmap.CompressFormat.PNG, 0, outputStream);
+        return outputStream.toByteArray();
+    }
+
+
+    private void imageStore(Bitmap bitmap) {
+        ByteArrayOutputStream stream = new ByteArrayOutputStream();
+        bitmap.compress(Bitmap.CompressFormat.JPEG,80,stream);
+        byte[] imageBytes = stream.toByteArray();
+        encodedImage = android.util.Base64.encodeToString(imageBytes, Base64.DEFAULT);
+
     }
 
 }

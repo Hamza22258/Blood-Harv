@@ -5,12 +5,21 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.net.Uri;
 import android.os.Bundle;
+import android.util.Base64;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.android.volley.Request;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.StringRequest;
+import com.android.volley.toolbox.Volley;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
@@ -19,6 +28,13 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.squareup.picasso.Picasso;
+
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.net.URI;
+import java.util.HashMap;
+import java.util.Map;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 
@@ -77,6 +93,44 @@ public class DonorProfile extends AppCompatActivity {
 
             }
         });
+        String url="http://192.168.0.100/Account/getAccount.php";
+        StringRequest request=new StringRequest(
+                Request.Method.POST,
+                url,
+                new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String response) {
+                        try {
+                            JSONObject object=new JSONObject(response);
+                            if(object.getInt("Success")==1){
+
+                                String image=object.getString("image");
+
+                                Picasso.get().load("http://192.168.0.100/Account/"+image).fit().centerCrop().into(profileImage);
+                            }
+
+                        } catch ( JSONException jsonException) {
+                            jsonException.printStackTrace();
+                        }
+                    }
+                }
+                ,
+                new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        Toast.makeText(DonorProfile.this, error+"", Toast.LENGTH_LONG).show();
+                    }
+                }
+        ){
+            protected Map<String,String> getParams(){
+                Map<String,String> data=new HashMap<String,String>();
+                String myid=FirebaseAuth.getInstance().getCurrentUser().getUid();
+                data.put("uid",myid);
+                return data;
+            }
+        };
+        Volley.newRequestQueue(DonorProfile.this).add(request);
+
         FirebaseDatabase database=FirebaseDatabase.getInstance();
         String id=FirebaseAuth.getInstance().getCurrentUser().getUid();
         DatabaseReference reference=database.getReference("Profile/"+id);
@@ -84,7 +138,7 @@ public class DonorProfile extends AppCompatActivity {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 profile=snapshot.getValue(Profile.class);
-                Picasso.get().load(profile.getDp()).into(profileImage);
+                //Picasso.get().load(profile.getDp()).into(profileImage);
                 username.setText(profile.getName());
                 accountType.setText(profile.getAccountType());
                 bloodtype.setText(profile.getBloodType());
@@ -92,7 +146,6 @@ public class DonorProfile extends AppCompatActivity {
                 age.setText(profile.getAge());
                 gender.setText(profile.getGender());
                 active.setText(profile.getActive());
-//                Toast.makeText(DonorProfile.this, profile.getName()+"", Toast.LENGTH_SHORT).show();
             }
 
             @Override
@@ -100,7 +153,6 @@ public class DonorProfile extends AppCompatActivity {
 
             }
         });
-//        Toast.makeText(DonorProfile.this, profile.getName()+"", Toast.LENGTH_SHORT).show();
 
     }
 }

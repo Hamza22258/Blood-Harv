@@ -1,9 +1,12 @@
 package com.hamza.blood_harv;
 
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.PersistableBundle;
+import android.util.Base64;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -13,6 +16,11 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.android.volley.Request;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.StringRequest;
+import com.android.volley.toolbox.Volley;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
@@ -28,12 +36,23 @@ import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.io.ByteArrayOutputStream;
+import java.io.FileNotFoundException;
+import java.io.InputStream;
+import java.util.HashMap;
+import java.util.Map;
+
 public class CreateBankProfileActivity extends AppCompatActivity {
     private GoogleMap mMap;
     TextView name, location;
     Button addDetails, uploadImage;
     Uri selectedImage;
     Double longitude,latitude;
+    String encodedImage;
+    Bitmap bitmap;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -70,20 +89,44 @@ public class CreateBankProfileActivity extends AppCompatActivity {
                                                             ,"Blood Bank"
                                                             ,location.getText().toString()
                                                             ,dp));
-//                                                    .addOnCompleteListener(new OnCompleteListener<Void>() {
-//                                                @Override
-//                                                public void onComplete(@NonNull Task<Void> task) {
-//                                                    if(task.isSuccessful()){
-//                                                        Toast.makeText(CreateBloodBankProfile.this,"User Registered",Toast.LENGTH_LONG).show();
-//                                                        finish();
-//                                                    }
-//                                                    else{
-//                                                        Toast.makeText(CreateBloodBankProfile.this,"User Not Registered",Toast.LENGTH_LONG).show();
-//                                                    }
-//                                                }
-//                                            });
-                                            Toast.makeText(CreateBankProfileActivity.this,"Bank Profile Created",Toast.LENGTH_SHORT).show();
-                                            startActivity(new Intent(CreateBankProfileActivity.this, BankProfile.class));
+                                            String url="http://192.168.0.100/Account/insertAccount.php";
+                                            StringRequest request=new StringRequest(
+                                                    Request.Method.POST,
+                                                    url,
+                                                    new Response.Listener<String>() {
+                                                        @Override
+                                                        public void onResponse(String response) {
+                                                            try {
+                                                                JSONObject object=new JSONObject(response);
+                                                                if(object.getInt("Success")==1){
+                                                                    Toast.makeText(CreateBankProfileActivity.this,"Bank Profile Created",Toast.LENGTH_SHORT).show();
+                                                                    startActivity(new Intent(CreateBankProfileActivity.this, BankProfile.class));
+                                                                }
+
+                                                            } catch ( JSONException jsonException) {
+                                                                jsonException.printStackTrace();
+                                                            }
+                                                        }
+                                                    }
+                                                    ,
+                                                    new Response.ErrorListener() {
+                                                        @Override
+                                                        public void onErrorResponse(VolleyError error) {
+                                                            Toast.makeText(CreateBankProfileActivity.this, error+"", Toast.LENGTH_LONG).show();
+                                                        }
+                                                    }
+                                            ){
+                                                protected Map<String,String> getParams(){
+                                                    Map<String,String> data=new HashMap<String,String>();
+                                                    String myid=FirebaseAuth.getInstance().getCurrentUser().getUid();
+                                                    data.put("uid",myid);
+                                                    data.put("image",encodedImage);
+                                                    return data;
+                                                }
+                                            };
+                                            Volley.newRequestQueue(CreateBankProfileActivity.this).add(request);
+
+
                                         }
                                     }).addOnFailureListener(new OnFailureListener() {
                                         @Override
@@ -133,9 +176,22 @@ public class CreateBankProfileActivity extends AppCompatActivity {
         super.onActivityResult(requestCode, resultCode, data);
         if(requestCode==200 && resultCode==RESULT_OK){
             selectedImage= data.getData();
+            try {
+                InputStream inputStream = getContentResolver().openInputStream(selectedImage);
+                bitmap = BitmapFactory.decodeStream(inputStream);
+                imageStore(bitmap);
+            } catch (FileNotFoundException e) {
+                e.printStackTrace();
+            }
             Toast.makeText(CreateBankProfileActivity.this,"Image Select Success",Toast.LENGTH_SHORT).show();
         }
+    }
 
+    private void imageStore(Bitmap bitmap) {
+        ByteArrayOutputStream stream = new ByteArrayOutputStream();
+        bitmap.compress(Bitmap.CompressFormat.JPEG,80,stream);
+        byte[] imageBytes = stream.toByteArray();
+        encodedImage = android.util.Base64.encodeToString(imageBytes, Base64.DEFAULT);
 
     }
 }
