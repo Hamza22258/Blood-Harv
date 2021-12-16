@@ -43,7 +43,8 @@ public class CreateAccountActivity extends AppCompatActivity {
 
                                 }
                                 else if(type.equals("Blood Bank")){
-                                    Intent intent=new Intent(CreateAccountActivity.this, CreateBloodBankProfile.class);
+                                    Intent intent=new Intent(CreateAccountActivity.this, CreateBankProfileActivity.class);
+                                    Toast.makeText(CreateAccountActivity.this, type+"", Toast.LENGTH_SHORT).show();
                                     intent.putExtra("type", "Blood Bank");
                                     startActivity(intent);
 

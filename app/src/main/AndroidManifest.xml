@@ -20,6 +20,12 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.BloodHarv">
         <activity
+            android:name=".CreateBankBloodActivity"
+            android:exported="false" />
+        <activity
+            android:name=".CreateBankProfileActivity"
+            android:exported="false" />
+        <activity
             android:name=".SelectAccountTypeActivity"
             android:exported="true" />
         <activity
@@ -67,9 +73,6 @@
         </activity>
         <activity
             android:name=".SelectAccountActivity"
-            android:exported="true" />
-        <activity
-            android:name=".CreateBloodBankProfile"
             android:exported="true" />
     </application>
 

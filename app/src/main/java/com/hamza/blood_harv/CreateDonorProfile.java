@@ -73,10 +73,11 @@ public class CreateDonorProfile extends AppCompatActivity {
                                                 public void onComplete(@NonNull Task<Void> task) {
                                                     if(task.isSuccessful()){
                                                         Toast.makeText(CreateDonorProfile.this,"User Registered",Toast.LENGTH_LONG).show();
-                                                        finish();
+                                                        startActivity(new Intent(CreateDonorProfile.this, DonorProfile.class));
                                                     }
                                                     else{
                                                         Toast.makeText(CreateDonorProfile.this,"User Not Registered",Toast.LENGTH_LONG).show();
+                                                        finish();
                                                     }
                                                 }
                                             });

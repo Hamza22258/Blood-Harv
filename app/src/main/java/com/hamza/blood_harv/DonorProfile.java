@@ -4,7 +4,10 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -23,6 +26,7 @@ public class DonorProfile extends AppCompatActivity {
     CircleImageView profileImage;
     TextView username, accountType, bloodtype, location, age, gender;
     Profile profile;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -34,6 +38,7 @@ public class DonorProfile extends AppCompatActivity {
         location=findViewById(R.id.location_text);
         age=findViewById(R.id.age_text);
         gender=findViewById(R.id.gender);
+
         FirebaseDatabase database=FirebaseDatabase.getInstance();
         String id=FirebaseAuth.getInstance().getCurrentUser().getUid();
         DatabaseReference reference=database.getReference("Profile/"+id);

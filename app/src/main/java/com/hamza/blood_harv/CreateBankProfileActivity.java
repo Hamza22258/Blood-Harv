@@ -28,16 +28,16 @@ import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
 
-public class CreateBloodBankProfile extends AppCompatActivity {
+public class CreateBankProfileActivity extends AppCompatActivity {
     private GoogleMap mMap;
     TextView name, location;
     Button addDetails, uploadImage;
     Uri selectedImage;
     Double longitude,latitude;
     @Override
-    public void onCreate(@Nullable Bundle savedInstanceState, @Nullable PersistableBundle persistentState) {
-        super.onCreate(savedInstanceState, persistentState);
-        setContentView(R.layout.activity_create_bloodbank_profile);
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_create_bank_profile);
         name=findViewById(R.id.name);
         location=findViewById(R.id.location);
         addDetails=findViewById(R.id.addDetails);
@@ -54,7 +54,7 @@ public class CreateBloodBankProfile extends AppCompatActivity {
                     StorageReference st= FirebaseStorage.getInstance().getReference();
                     String id= FirebaseAuth.getInstance().getCurrentUser().getUid();
                     st=st.child("images/"+id+".jpg");
-                    Toast.makeText(CreateBloodBankProfile.this,id+"",Toast.LENGTH_LONG).show();
+                    Toast.makeText(CreateBankProfileActivity.this,id+"",Toast.LENGTH_LONG).show();
                     st.putFile(selectedImage)
                             .addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
                                 @Override
@@ -82,13 +82,13 @@ public class CreateBloodBankProfile extends AppCompatActivity {
 //                                                    }
 //                                                }
 //                                            });
-                                            Toast.makeText(CreateBloodBankProfile.this,"Bank Profile Created",Toast.LENGTH_SHORT).show();
-
+                                            Toast.makeText(CreateBankProfileActivity.this,"Bank Profile Created",Toast.LENGTH_SHORT).show();
+                                            startActivity(new Intent(CreateBankProfileActivity.this, BankProfile.class));
                                         }
                                     }).addOnFailureListener(new OnFailureListener() {
                                         @Override
                                         public void onFailure(@NonNull Exception e) {
-                                            Toast.makeText(CreateBloodBankProfile.this,"Image uploading failed",Toast.LENGTH_LONG).show();
+                                            Toast.makeText(CreateBankProfileActivity.this,"Image uploading failed",Toast.LENGTH_LONG).show();
                                         }
                                     });
                                 }
@@ -96,12 +96,12 @@ public class CreateBloodBankProfile extends AppCompatActivity {
                             .addOnFailureListener(new OnFailureListener() {
                                 @Override
                                 public void onFailure(@NonNull Exception e) {
-                                    Toast.makeText(CreateBloodBankProfile.this,"Image uploading failed on main upload",Toast.LENGTH_LONG).show();
+                                    Toast.makeText(CreateBankProfileActivity.this,"Image uploading failed on main upload",Toast.LENGTH_LONG).show();
                                 }
                             });
                 }
                 else{
-                    Toast.makeText(CreateBloodBankProfile.this,"Image not loaded",Toast.LENGTH_LONG).show();
+                    Toast.makeText(CreateBankProfileActivity.this,"Image not loaded",Toast.LENGTH_LONG).show();
                 }
             }
         });
@@ -128,13 +128,12 @@ public class CreateBloodBankProfile extends AppCompatActivity {
             }
         });
     }
-
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         if(requestCode==200 && resultCode==RESULT_OK){
             selectedImage= data.getData();
-            Toast.makeText(CreateBloodBankProfile.this,"Image Select Success",Toast.LENGTH_SHORT).show();
+            Toast.makeText(CreateBankProfileActivity.this,"Image Select Success",Toast.LENGTH_SHORT).show();
         }
 
 
