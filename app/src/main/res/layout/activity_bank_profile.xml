@@ -63,14 +63,34 @@
         android:layout_marginTop="10dp"
         android:text="Blood Bank"
         android:textSize="20sp" />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/location"
+        android:id="@+id/type_heading"
+        android:text="Blood Type"
+        android:layout_marginLeft="25dp"
+        android:layout_marginTop="10dp"
+        android:textSize="20sp" />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/location"
+        android:id="@+id/availability_heading"
+        android:text="Availability"
+        android:layout_marginLeft="200dp"
+        android:layout_marginTop="10dp"
+        android:textSize="20sp" />
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@+id/location">
+        android:layout_below="@+id/type_heading">
         <androidx.recyclerview.widget.RecyclerView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:id="@+id/listBlood"
+            android:layout_marginLeft="25dp"
+            android:layout_marginTop="5dp"
             />
     </RelativeLayout>
 

@@ -48,7 +48,7 @@ public class BankProfile extends AppCompatActivity {
         rv=findViewById(R.id.listBlood);
         ls=new ArrayList<>();
 //        RecyclerView.LayoutManager lm=new LinearLayoutManager(BankProfile.this);
-        ls.add(new BloodTypes("B", "No"));
+
         adapter=new TypesAdapter(ls,BankProfile.this);
         rv.setLayoutManager(new LinearLayoutManager(BankProfile.this));
         rv.setAdapter(adapter);
