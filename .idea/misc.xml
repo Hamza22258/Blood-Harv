@@ -32,6 +32,7 @@
         <entry key="app/src/main/res/layout/activity_create_donor_profile.xml" value="0.24166666666666667" />
         <entry key="app/src/main/res/layout/activity_create_profile.xml" value="0.24166666666666667" />
         <entry key="app/src/main/res/layout/activity_donor_profile.xml" value="0.24166666666666667" />
+        <entry key="app/src/main/res/layout/activity_drawer.xml" value="0.25052083333333336" />
         <entry key="app/src/main/res/layout/activity_home.xml" value="0.24166666666666667" />
         <entry key="app/src/main/res/layout/activity_login.xml" value="0.24166666666666667" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.24166666666666667" />
@@ -40,6 +41,7 @@
         <entry key="app/src/main/res/layout/activity_select_account_type.xml" value="0.21822916666666667" />
         <entry key="app/src/main/res/layout/activity_splash.xml" value="0.24166666666666667" />
         <entry key="app/src/main/res/layout/row.xml" value="0.2520833333333333" />
+        <entry key="app/src/main/res/menu/navigation_menu.xml" value="0.25052083333333336" />
       </map>
     </option>
   </component>
