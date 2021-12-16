@@ -11,6 +11,7 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.util.Base64;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -43,6 +44,7 @@ public class DonorProfile extends AppCompatActivity {
     TextView username, accountType, bloodtype, location, age, gender,active;
     Profile profile;
     ImageView activeChange;
+    Button backToHome;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -57,6 +59,7 @@ public class DonorProfile extends AppCompatActivity {
         gender=findViewById(R.id.gender);
         active=findViewById(R.id.active);
         activeChange=findViewById(R.id.activeChange);
+        backToHome=findViewById(R.id.backToHome);
         activeChange.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -93,6 +96,14 @@ public class DonorProfile extends AppCompatActivity {
 
             }
         });
+        backToHome.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent=new Intent(DonorProfile.this,MainActivity.class);
+                startActivity(intent);
+            }
+        });
+        
         String url="http://192.168.0.100/Account/getAccount.php";
         StringRequest request=new StringRequest(
                 Request.Method.POST,

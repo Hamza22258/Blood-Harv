@@ -174,5 +174,15 @@
         android:background="#E1E1E1"
         android:padding="5dp" />
 
-
+    <android.widget.Button
+        android:id="@+id/backToHome"
+        android:layout_below="@id/activeChange"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:layout_centerHorizontal="true"
+        android:background="#4385F5"
+        android:text="Back to Home"
+        android:padding="10dp"
+        android:textColor="@color/white" />
 </RelativeLayout>

@@ -7,6 +7,8 @@
          location permissions for the "MyLocation" functionality.
     -->
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
@@ -22,25 +24,25 @@
         android:theme="@style/Theme.BloodHarv">
         <activity
             android:name=".CreateBankBloodActivity"
-            android:exported="false" />
+            android:exported="true" />
         <activity
             android:name=".CreateBankProfileActivity"
-            android:exported="false" />
+            android:exported="true" />
         <activity
             android:name=".SelectAccountTypeActivity"
             android:exported="true" />
         <activity
             android:name=".CreateDonorProfile"
-            android:exported="false" />
+            android:exported="true" />
         <activity
             android:name=".DonorProfile"
-            android:exported="false" />
+            android:exported="true" />
         <activity
             android:name=".BankProfile"
-            android:exported="false" />
+            android:exported="true" />
         <activity
             android:name=".MainActivity"
-            android:exported="false" />
+            android:exported="true" />
         <!--
              The API key for Google Maps-based APIs is defined as a string resource.
              (See the file "res/values/google_maps_api.xml").
