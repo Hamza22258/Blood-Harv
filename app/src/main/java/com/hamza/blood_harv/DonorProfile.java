@@ -24,8 +24,9 @@ import de.hdodenhof.circleimageview.CircleImageView;
 
 public class DonorProfile extends AppCompatActivity {
     CircleImageView profileImage;
-    TextView username, accountType, bloodtype, location, age, gender;
+    TextView username, accountType, bloodtype, location, age, gender,active;
     Profile profile;
+    ImageView activeChange;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,7 +39,44 @@ public class DonorProfile extends AppCompatActivity {
         location=findViewById(R.id.location_text);
         age=findViewById(R.id.age_text);
         gender=findViewById(R.id.gender);
+        active=findViewById(R.id.active);
+        activeChange=findViewById(R.id.activeChange);
+        activeChange.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                String val;
+                if (active.getText().toString().equals("false")){
+                    val="true";
+                }
+                else{
+                    val="false";
+                }
+                FirebaseDatabase database=FirebaseDatabase.getInstance();
+                String id=FirebaseAuth.getInstance().getCurrentUser().getUid();
+                DatabaseReference reference=database.getReference("Profile/"+id).child("active");
+                reference.setValue(val);
+//                reference.addValueEventListener(new ValueEventListener() {
+//                    @Override
+//                    public void onDataChange(@NonNull DataSnapshot snapshot) {
+//                        DatabaseReference new_reference=snapshot.getRef().child("active");
+//                        if (snapshot.getValue(Profile.class).getActive().equals("false")){
+//                            new_reference.setValue("true");
+//                        }
+//                        else{
+//                            new_reference.setValue("false");
+//                        }
+//
+////                Toast.makeText(DonorProfile.this, profile.getName()+"", Toast.LENGTH_SHORT).show();
+//                    }
+//
+//                    @Override
+//                    public void onCancelled(@NonNull DatabaseError error) {
+//
+//                    }
+//                });
 
+            }
+        });
         FirebaseDatabase database=FirebaseDatabase.getInstance();
         String id=FirebaseAuth.getInstance().getCurrentUser().getUid();
         DatabaseReference reference=database.getReference("Profile/"+id);
@@ -53,6 +91,7 @@ public class DonorProfile extends AppCompatActivity {
                 location.setText(profile.getLocation());
                 age.setText(profile.getAge());
                 gender.setText(profile.getGender());
+                active.setText(profile.getActive());
 //                Toast.makeText(DonorProfile.this, profile.getName()+"", Toast.LENGTH_SHORT).show();
             }
 

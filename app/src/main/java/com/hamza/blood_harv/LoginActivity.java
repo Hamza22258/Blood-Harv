@@ -51,9 +51,11 @@ public class LoginActivity extends AppCompatActivity {
                                     public void onDataChange(@NonNull DataSnapshot snapshot) {
                                        if (snapshot.getValue(Profile.class).getAccountType().equals("Donor")==true){
                                            startActivity(new Intent(LoginActivity.this, DonorProfile.class));
+                                           finish();
                                        }
                                        else{
                                            startActivity(new Intent(LoginActivity.this, BankProfile.class));
+                                           finish();
                                        }
 //                Toast.makeText(DonorProfile.this, profile.getName()+"", Toast.LENGTH_SHORT).show();
                                     }
