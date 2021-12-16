@@ -17,7 +17,7 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 
 public class LoginActivity extends AppCompatActivity {
-    TextView createAccount;
+    Button createAccount;
     EditText username, password;
     Button login;
     FirebaseAuth mAuth;
@@ -53,7 +53,7 @@ public class LoginActivity extends AppCompatActivity {
         createAccount.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(LoginActivity.this, SelectAccountActivity.class));
+                startActivity(new Intent(LoginActivity.this, SelectAccountTypeActivity.class));
             }
         });
     }

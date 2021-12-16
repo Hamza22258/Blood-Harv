@@ -89,6 +89,7 @@
         android:layout_weight="1"
         android:padding="12dp">
         <EditText
+            android:inputType="textPassword"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:background="#E1E1E1"
@@ -102,12 +103,14 @@
         android:layout_height="0dp"
         android:layout_weight="1">
 
-        <TextView
+        <android.widget.Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerHorizontal="true"
-            android:paddingLeft="10dp"
+            android:padding="10dp"
+            android:background="#4385F5"
             android:text="Create Account"
+            android:textColor="@color/white"
             android:id="@+id/createAccount"/>
     </RelativeLayout>
     <RelativeLayout

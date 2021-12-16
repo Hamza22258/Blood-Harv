@@ -11,13 +11,15 @@ import android.widget.RadioGroup;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
-public class SelectAccountActivity extends AppCompatActivity {
+public class SelectAccountTypeActivity extends AppCompatActivity {
     RadioGroup rdGroup;
     RadioButton rdButton;
     Button createAccount;
     @Override
-    public void onCreate(@Nullable Bundle savedInstanceState, @Nullable PersistableBundle persistentState) {
-        super.onCreate(savedInstanceState, persistentState);
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_select_account_type);
+
         rdGroup=findViewById(R.id.select_account_type);
 
         createAccount=findViewById(R.id.createprofile);
@@ -29,12 +31,12 @@ public class SelectAccountActivity extends AppCompatActivity {
 
                 String result=rdButton.getText().toString();
                 if(result.equals("Donor")){
-                    Intent intent=new Intent(SelectAccountActivity.this, CreateAccountActivity.class);
+                    Intent intent=new Intent(SelectAccountTypeActivity.this, CreateAccountActivity.class);
                     intent.putExtra("type", "Donor");
                     startActivity(intent);
                 }
                 if(result.equals("Blood Bank")){
-                    Intent intent=new Intent(SelectAccountActivity.this, CreateAccountActivity.class);
+                    Intent intent=new Intent(SelectAccountTypeActivity.this, CreateAccountActivity.class);
                     intent.putExtra("type", "Blood Bank");
                     startActivity(intent);
                 }
@@ -45,3 +47,37 @@ public class SelectAccountActivity extends AppCompatActivity {
 
     }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//package com.hamza.blood_harv;
+//
+//import androidx.appcompat.app.AppCompatActivity;
+//
+//import android.os.Bundle;
+//
+//public class SelectAccountTypeActivity extends AppCompatActivity {
+//
+//    @Override
+//    protected void onCreate(Bundle savedInstanceState) {
+//        super.onCreate(savedInstanceState);
+//        setContentView(R.layout.activity_select_account_type);
+//    }
+//}

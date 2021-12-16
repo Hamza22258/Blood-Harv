@@ -37,12 +37,14 @@ public class CreateAccountActivity extends AppCompatActivity {
                             @Override
                             public void onSuccess(AuthResult authResult) {
                                 if(type.equals("Donor")){
-                                Intent intent=new Intent(CreateAccountActivity.this, CreateDonorProfile.class);
+                                    Intent intent=new Intent(CreateAccountActivity.this, CreateDonorProfile.class);
+                                    intent.putExtra("type", "Donor");
                                     startActivity(intent);
 
                                 }
                                 else if(type.equals("Blood Bank")){
                                     Intent intent=new Intent(CreateAccountActivity.this, CreateBloodBankProfile.class);
+                                    intent.putExtra("type", "Blood Bank");
                                     startActivity(intent);
 
                                 }

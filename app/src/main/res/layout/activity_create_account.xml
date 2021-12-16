@@ -94,6 +94,7 @@
             android:layout_height="match_parent"
             android:background="#E1E1E1"
             android:paddingLeft="10dp"
+            android:inputType="textPassword"
             android:hint="password"
             android:id="@+id/password"
             />

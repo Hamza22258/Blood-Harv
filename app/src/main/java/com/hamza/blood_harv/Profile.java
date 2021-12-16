@@ -16,6 +16,14 @@ public class Profile {
         this.active = active;
     }
 
+    public Profile(String name, String accountType, String location, String dp) {
+        this.name = name;
+        this.accountType = accountType;
+        this.location = location;
+        this.dp = dp;
+    }
+
+
     public String getBloodType() {
         return bloodType;
     }

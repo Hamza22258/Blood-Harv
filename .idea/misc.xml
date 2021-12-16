@@ -20,6 +20,19 @@
         <entry key="..\:/Users/Hamza/AndroidStudioProjects/BloodHarv/app/src/main/res/layout/activity_main.xml" value="0.33177083333333335" />
         <entry key="..\:/Users/Hamza/AndroidStudioProjects/BloodHarv/app/src/main/res/layout/activity_search.xml" value="0.33177083333333335" />
         <entry key="..\:/Users/Hamza/AndroidStudioProjects/BloodHarv/app/src/main/res/layout/activity_splash.xml" value="0.33177083333333335" />
+        <entry key="app/src/main/res/layout/activity_bank_profile.xml" value="0.24166666666666667" />
+        <entry key="app/src/main/res/layout/activity_create_account.xml" value="0.24166666666666667" />
+        <entry key="app/src/main/res/layout/activity_create_bloodbank_profile.xml" value="0.24166666666666667" />
+        <entry key="app/src/main/res/layout/activity_create_donor_profile.xml" value="0.24166666666666667" />
+        <entry key="app/src/main/res/layout/activity_create_profile.xml" value="0.24166666666666667" />
+        <entry key="app/src/main/res/layout/activity_donor_profile.xml" value="0.24166666666666667" />
+        <entry key="app/src/main/res/layout/activity_home.xml" value="0.24166666666666667" />
+        <entry key="app/src/main/res/layout/activity_login.xml" value="0.24166666666666667" />
+        <entry key="app/src/main/res/layout/activity_main.xml" value="0.24166666666666667" />
+        <entry key="app/src/main/res/layout/activity_search.xml" value="0.24166666666666667" />
+        <entry key="app/src/main/res/layout/activity_select_account.xml" value="0.24166666666666667" />
+        <entry key="app/src/main/res/layout/activity_select_account_type.xml" value="0.21822916666666667" />
+        <entry key="app/src/main/res/layout/activity_splash.xml" value="0.24166666666666667" />
       </map>
     </option>
   </component>
