@@ -1,11 +1,20 @@
 package com.hamza.blood_harv;
 
 public class Profile {
-    private String name, bloodType, accountType, location, age, gender, dp, active;
+    public String getUid() {
+        return uid;
+    }
+
+    public void setUid(String uid) {
+        this.uid = uid;
+    }
+
+    private String uid, name, bloodType, accountType, location, age, gender, dp, active;
     public Profile(){
 
     }
-    public Profile(String name, String bloodType, String accountType, String location, String age, String gender, String dp, String active) {
+    public Profile(String uid, String name, String bloodType, String accountType, String location, String age, String gender, String dp, String active) {
+        this.uid= uid;
         this.name = name;
         this.bloodType = bloodType;
         this.accountType = accountType;

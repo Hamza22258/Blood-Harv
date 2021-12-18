@@ -1,16 +1,20 @@
 package com.hamza.blood_harv;
 
 
+import android.app.Activity;
 import android.content.Context;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.google.firebase.database.FirebaseDatabase;
 import com.squareup.picasso.Picasso;
 
 import java.util.List;
@@ -22,6 +26,15 @@ public class HomeAdapter extends RecyclerView.Adapter<HomeAdapter.ViewHolder> {
     Boolean SearchCheck;
     String SearchQuery;
     Context c;
+
+    private CallbackInterface mCallback;
+
+    public interface CallbackInterface{
+
+
+        void onSelect(String uId, String accountType);
+    }
+
     public HomeAdapter(){
 
     }
@@ -30,6 +43,12 @@ public class HomeAdapter extends RecyclerView.Adapter<HomeAdapter.ViewHolder> {
         this.SearchQuery="";
         this.ls = ls;
         this.c = c;
+        try{
+            mCallback = (CallbackInterface) c;
+        }catch(ClassCastException ex){
+            //.. should log the error or throw and exception
+            Log.e("MyAdapter","Must implement the CallbackInterface in the Activity", ex);
+        }
     }
     @NonNull
     @Override
@@ -65,6 +84,16 @@ public class HomeAdapter extends RecyclerView.Adapter<HomeAdapter.ViewHolder> {
             holder.name.setText(ls.get(position).getName());
             Picasso.get().load(ls.get(position).getDp()).into(holder.image);
         }
+        holder.linearLayout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                FirebaseDatabase database=FirebaseDatabase.getInstance();
+                Toast.makeText(v.getContext(), ls.get((Integer)holder.getAdapterPosition()).getUid()+"", Toast.LENGTH_SHORT).show();
+//                mCallback.onSelect(ls.get((Integer)holder.getAdapterPosition()).getUid());
+
+
+            }
+        });
 
     }
 

@@ -1,7 +1,6 @@
 package com.hamza.blood_harv;
 
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -13,7 +12,6 @@ import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -23,7 +21,7 @@ import com.google.firebase.database.ValueEventListener;
 import java.util.ArrayList;
 import java.util.List;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements HomeAdapter.CallbackInterface{
     int SEARCHRESULT= 1001;
 
     List<Profile> ls;
@@ -81,7 +79,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 for (DataSnapshot data : snapshot.getChildren()) {
-                    ls.add(new Profile(data.child("name").getValue(String.class), data.child("bloodType").getValue(String.class),
+                    ls.add(new Profile(data.getKey() ,data.child("name").getValue(String.class), data.child("bloodType").getValue(String.class),
                             data.child("accountType").getValue(String.class), data.child("location").getValue(String.class),
                             data.child("age").getValue(String.class), data.child("gender").getValue(String.class),
                             data.child("dp").getValue(String.class), data.child("active").getValue(String.class)));
@@ -118,5 +116,10 @@ public class MainActivity extends AppCompatActivity {
 
             }
         }
+    }
+
+    @Override
+    public void onSelect(String uId, String accountType) {
+        Intent intent= new Intent(MainActivity.this, ViewBankProfileActivity.class);
     }
 }

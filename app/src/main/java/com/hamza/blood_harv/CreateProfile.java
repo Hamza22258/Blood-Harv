@@ -58,7 +58,7 @@ public class CreateProfile extends AppCompatActivity {
                                         public void onSuccess(Uri uri) {
                                             String dp=uri.toString();
                                             reference.child(id).setValue(
-                                                    new Profile(
+                                                    new Profile("",
                                                             name.getText().toString()
                                                             ,bloodType.getText().toString()
                                                             ,accountType.getText().toString()

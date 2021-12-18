@@ -1,5 +1,5 @@
 <resources>
     <string name="app_name">Blood-Harv</string>
     <string name="title_activity_home">HomeActivity</string>
-    <string name="IP">192.168.134.15</string>
+    <string name="IP">192.168.1.13</string>
 </resources>
