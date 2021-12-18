@@ -5,6 +5,7 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -18,11 +19,15 @@ import de.hdodenhof.circleimageview.CircleImageView;
 
 public class HomeAdapter extends RecyclerView.Adapter<HomeAdapter.ViewHolder> {
     List<Profile> ls;
+    Boolean SearchCheck;
+    String SearchQuery;
     Context c;
     public HomeAdapter(){
 
     }
     public HomeAdapter(List<Profile> ls, Context c) {
+        this.SearchCheck=false;
+        this.SearchQuery="";
         this.ls = ls;
         this.c = c;
     }
@@ -35,14 +40,32 @@ public class HomeAdapter extends RecyclerView.Adapter<HomeAdapter.ViewHolder> {
 
     @Override
     public void onBindViewHolder(@NonNull HomeAdapter.ViewHolder holder, int position) {
-        if (ls.get(position).getActive().equals("false")){
-            holder.type.setText("Not Active");
+        if(SearchCheck== true){
+            if(ls.get(position).getBloodType().equals(SearchQuery)){
+                if (ls.get(position).getActive().equals("false")){
+                    holder.type.setText("Not Active");
+                }
+                else{
+                    holder.type.setText("Active");
+                }
+                holder.name.setText(ls.get(position).getName());
+                Picasso.get().load(ls.get(position).getDp()).into(holder.image);
+            }
+            else{
+                holder.linearLayout.setVisibility(View.INVISIBLE);
+            }
         }
         else{
-            holder.type.setText("Active");
+            if (ls.get(position).getActive().equals("false")){
+                holder.type.setText("Not Active");
+            }
+            else{
+                holder.type.setText("Active");
+            }
+            holder.name.setText(ls.get(position).getName());
+            Picasso.get().load(ls.get(position).getDp()).into(holder.image);
         }
-        holder.name.setText(ls.get(position).getName());
-        Picasso.get().load(ls.get(position).getDp()).into(holder.image);
+
     }
 
     @Override
@@ -53,11 +76,13 @@ public class HomeAdapter extends RecyclerView.Adapter<HomeAdapter.ViewHolder> {
     public class ViewHolder extends RecyclerView.ViewHolder {
         TextView type,name;
         CircleImageView image;
+        LinearLayout linearLayout;
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             type=itemView.findViewById(R.id.type);
             image=itemView.findViewById(R.id.profile_image);
             name=itemView.findViewById(R.id.name);
+            linearLayout=itemView.findViewById(R.id.layout);
         }
     }
 }

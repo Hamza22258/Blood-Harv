@@ -64,6 +64,8 @@ public class CreateDonorProfile extends AppCompatActivity {
         temp=findViewById(R.id.temp);
         FirebaseDatabase database=FirebaseDatabase.getInstance();
         DatabaseReference reference=database.getReference("Profile");
+        String ip=getResources().getString(R.string.IP);
+
 
         addDetails.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -94,7 +96,7 @@ public class CreateDonorProfile extends AppCompatActivity {
                                                 @Override
                                                 public void onComplete(@NonNull Task<Void> task) {
                                                     if(task.isSuccessful()){
-                                                        String url="http://192.168.1.16/Account/insertAccount.php";
+                                                        String url="http://"+ip+"/Account/insertAccount.php";
                                                         StringRequest request=new StringRequest(
                                                                 Request.Method.POST,
                                                                 url,

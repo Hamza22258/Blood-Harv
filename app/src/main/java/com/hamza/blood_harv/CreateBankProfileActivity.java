@@ -63,6 +63,8 @@ public class CreateBankProfileActivity extends AppCompatActivity {
         uploadImage=findViewById(R.id.uploadImage);
         FirebaseDatabase database=FirebaseDatabase.getInstance();
         DatabaseReference reference=database.getReference("Profile");
+        String ip=getResources().getString(R.string.IP);
+
 
         addDetails.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -89,7 +91,7 @@ public class CreateBankProfileActivity extends AppCompatActivity {
                                                             ,"Blood Bank"
                                                             ,location.getText().toString()
                                                             ,dp));
-                                            String url="http://192.168.1.16/Account/insertAccount.php";
+                                            String url="http://"+ip+"/Account/insertAccount.php";
                                             StringRequest request=new StringRequest(
                                                     Request.Method.POST,
                                                     url,

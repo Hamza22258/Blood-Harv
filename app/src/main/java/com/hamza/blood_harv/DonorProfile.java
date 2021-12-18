@@ -59,6 +59,8 @@ public class DonorProfile extends AppCompatActivity {
         active=findViewById(R.id.active);
         activeChange=findViewById(R.id.activeChange);
         backToHome=findViewById(R.id.openhome);
+        String ip=getResources().getString(R.string.IP);
+
         activeChange.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -103,7 +105,7 @@ public class DonorProfile extends AppCompatActivity {
             }
         });
         
-        String url="http://192.168.1.16/Account/getAccount.php";
+        String url="http://"+ip+"/Account/getAccount.php";
         StringRequest request=new StringRequest(
                 Request.Method.POST,
                 url,
@@ -116,7 +118,7 @@ public class DonorProfile extends AppCompatActivity {
 
                                 String image=object.getString("image");
 
-                                Picasso.get().load("http://192.168.1.16/Account/"+image).fit().centerCrop().into(profileImage);
+                                Picasso.get().load("http://"+ip+"/Account/"+image).fit().centerCrop().into(profileImage);
                             }
 
                         } catch ( JSONException jsonException) {

@@ -67,8 +67,9 @@ public class BankProfile extends AppCompatActivity {
                 startActivity(new Intent(BankProfile.this, MainActivity.class));
             }
         });
-
-        String url="http://192.168.1.16/Account/getAccount.php";
+        String ip=getResources().getString(R.string.IP);
+        Toast.makeText(BankProfile.this, "IP: "+ip, Toast.LENGTH_SHORT).show();
+        String url="http://"+ip+"/Account/getAccount.php";
         StringRequest request=new StringRequest(
                 Request.Method.POST,
                 url,
@@ -81,7 +82,7 @@ public class BankProfile extends AppCompatActivity {
 
                                 String image=object.getString("image");
 
-                                Picasso.get().load("http://192.168.1.16/Account/"+image).fit().centerCrop().into(profile_image);
+                                Picasso.get().load("http://"+ip+"/Account/"+image).fit().centerCrop().into(profile_image);
                             }
 
                         } catch ( JSONException jsonException) {

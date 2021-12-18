@@ -24,9 +24,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
+    int SEARCHRESULT= 1001;
 
     List<Profile> ls;
-    ImageView imageView;
+    ImageView imageView, imageView1;
     RecyclerView rv;
     HomeAdapter adapter;
     @Override
@@ -37,11 +38,19 @@ public class MainActivity extends AppCompatActivity {
         DatabaseReference reference=database.getReference("Profile");
         rv=findViewById(R.id.rv);
         imageView=findViewById(R.id.openprofile);
+        imageView1=findViewById(R.id.search);
         ls=new ArrayList<>();
 //        ls.add(new Profile("as","as","as","as","as","as","as","as"));
         adapter=new HomeAdapter(ls,MainActivity.this);
         rv.setLayoutManager(new LinearLayoutManager(MainActivity.this));
         rv.setAdapter(adapter);
+        imageView1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivityForResult(new Intent(MainActivity.this, SearchActivity.class),SEARCHRESULT);
+            }
+        });
+
         imageView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -88,5 +97,26 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+    }
+    protected void onActivityResult(int requestCode, int resultCode, Intent intent) {
+        super.onActivityResult(requestCode, resultCode, intent);
+        if(requestCode==SEARCHRESULT) {
+            if (resultCode == RESULT_OK) {
+                Toast.makeText(MainActivity.this, "Here", Toast.LENGTH_SHORT).show();
+                String result = intent.getStringExtra("search");
+                if (result.equals("")){
+                    adapter.SearchCheck=false;
+                    rv.setAdapter(adapter);
+
+                }
+                else{
+                    adapter.SearchCheck=true;
+                    adapter.SearchQuery=result;
+                    rv.setAdapter(adapter);
+
+                }
+
+            }
+        }
     }
 }
