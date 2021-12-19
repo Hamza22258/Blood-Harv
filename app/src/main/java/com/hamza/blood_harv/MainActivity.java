@@ -120,6 +120,17 @@ public class MainActivity extends AppCompatActivity implements HomeAdapter.Callb
 
     @Override
     public void onSelect(String uId, String accountType) {
-        Intent intent= new Intent(MainActivity.this, ViewBankProfileActivity.class);
+        if(accountType.equals("Blood Bank")){
+
+        }
+        else if(accountType.equals("Donor")){
+
+        }
+//        Intent intent= new Intent(MainActivity.this, ViewBankProfileActivity.class);
+    }
+
+    @Override
+    public void onSearch(String search) {
+
     }
 }

@@ -7,6 +7,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.BaseAdapter;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -17,6 +18,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.google.firebase.database.FirebaseDatabase;
 import com.squareup.picasso.Picasso;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import de.hdodenhof.circleimageview.CircleImageView;
@@ -33,6 +35,7 @@ public class HomeAdapter extends RecyclerView.Adapter<HomeAdapter.ViewHolder> {
 
 
         void onSelect(String uId, String accountType);
+        void onSearch(String search);
     }
 
     public HomeAdapter(){
@@ -71,8 +74,8 @@ public class HomeAdapter extends RecyclerView.Adapter<HomeAdapter.ViewHolder> {
                 Picasso.get().load(ls.get(position).getDp()).into(holder.image);
             }
             else{
-                holder.linearLayout.setVisibility(View.INVISIBLE);
-            }
+                holder.linearLayout.setVisibility(View.GONE);
+                holder.linearLayout.setLayoutParams(new RecyclerView.LayoutParams(0, 0));            }
         }
         else{
             if (ls.get(position).getActive().equals("false")){
@@ -88,7 +91,7 @@ public class HomeAdapter extends RecyclerView.Adapter<HomeAdapter.ViewHolder> {
             @Override
             public void onClick(View v) {
                 FirebaseDatabase database=FirebaseDatabase.getInstance();
-                Toast.makeText(v.getContext(), ls.get((Integer)holder.getAdapterPosition()).getUid()+"", Toast.LENGTH_SHORT).show();
+                Toast.makeText(v.getContext(), ls.get((Integer)holder.getAdapterPosition()).getAccountType()+"", Toast.LENGTH_SHORT).show();
 //                mCallback.onSelect(ls.get((Integer)holder.getAdapterPosition()).getUid());
 
 
@@ -99,7 +102,7 @@ public class HomeAdapter extends RecyclerView.Adapter<HomeAdapter.ViewHolder> {
 
     @Override
     public int getItemCount() {
-        return ls.size();
+        return ls.size() ;
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {
