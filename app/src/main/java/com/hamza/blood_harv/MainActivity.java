@@ -17,13 +17,13 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.onesignal.OneSignal;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class MainActivity extends AppCompatActivity implements HomeAdapter.CallbackInterface{
     int SEARCHRESULT= 1001;
-
     List<Profile> ls;
     ImageView imageView, imageView1;
     RecyclerView rv;
@@ -32,6 +32,7 @@ public class MainActivity extends AppCompatActivity implements HomeAdapter.Callb
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
         FirebaseDatabase database=FirebaseDatabase.getInstance();
         DatabaseReference reference=database.getReference("Profile");
         rv=findViewById(R.id.rv);
@@ -121,10 +122,14 @@ public class MainActivity extends AppCompatActivity implements HomeAdapter.Callb
     @Override
     public void onSelect(String uId, String accountType) {
         if(accountType.equals("Blood Bank")){
-
+            Intent intent=new Intent( MainActivity.this, ViewBankProfileActivity.class);
+            intent.putExtra("uid",uId);
+            startActivity(intent);
         }
         else if(accountType.equals("Donor")){
-
+            Intent intent=new Intent( MainActivity.this, ViewDonorProfileActivity.class);
+            intent.putExtra("uid",uId);
+            startActivity(intent);
         }
 //        Intent intent= new Intent(MainActivity.this, ViewBankProfileActivity.class);
     }

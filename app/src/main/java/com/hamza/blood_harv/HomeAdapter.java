@@ -91,8 +91,8 @@ public class HomeAdapter extends RecyclerView.Adapter<HomeAdapter.ViewHolder> {
             @Override
             public void onClick(View v) {
                 FirebaseDatabase database=FirebaseDatabase.getInstance();
-                Toast.makeText(v.getContext(), ls.get((Integer)holder.getAdapterPosition()).getAccountType()+"", Toast.LENGTH_SHORT).show();
-//                mCallback.onSelect(ls.get((Integer)holder.getAdapterPosition()).getUid());
+//                Toast.makeText(v.getContext(), ls.get((Integer)holder.getAdapterPosition()).getAccountType()+"", Toast.LENGTH_SHORT).show();
+                mCallback.onSelect(ls.get((Integer)holder.getAdapterPosition()).getUid(), ls.get((Integer)holder.getAdapterPosition()).getAccountType());
 
 
             }
